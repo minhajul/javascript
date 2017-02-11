@@ -20,12 +20,23 @@
 //
 // For example, let's say the HR department adds a "tshirtSize" field to each employee record. Your code should flexibly accommodate that.
 
-function transformEmployeeData(array) {
-	return array.map(function(a) {
-    	var obj = {};
-    	a.map(function(b) {
-      	   obj[b[0]] = b[1];
-    	});
-        return obj;
-  	})
+// E.g., it should also be able to handle this, or any other object containing simple key-value pairs.
+// {
+//   species: 'canine',
+//   name: 'Bowser',
+//   weight: 45
+// }
+
+
+var data = { name: 'Holly', age: 35, role: 'producer' }
+function convertObjectToList(obj) {
+    return Object.keys(obj).map(e => [e, obj[e]]);
 }
+
+var object = {
+  name : 'Holly',
+  age  : 35,
+  role : 'producer'
+}
+
+convertObjectToList(object);
