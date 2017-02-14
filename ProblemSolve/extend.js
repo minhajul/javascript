@@ -21,17 +21,15 @@
 
 
 function extend(obj1, obj2) {
-  let keys = Object.keys(obj2);
-	var results = {};
-	for(var key in obj2){
-    if(!obj1.hasOwnProperty(key)){
-    	obj1[key] = obj2[key]
+	for(let key in obj2){
+        if(!obj1.hasOwnProperty(key)){
+            obj1[key] = obj2[key]
+        }
     }
-  }
 	return obj1;
 }
 
-var obj1 = {a: 1,b: 2};
-var obj2 = {b: 4,c: 3};
+let obj1 = {a: 1,b: 2}
+    obj2 = {b: 4,c: 3};
 
 extend(obj1, obj2);

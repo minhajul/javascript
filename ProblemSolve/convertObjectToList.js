@@ -27,16 +27,14 @@
 //   weight: 45
 // }
 
-
-var data = { name: 'Holly', age: 35, role: 'producer' }
 function convertObjectToList(obj) {
     return Object.keys(obj).map(e => [e, obj[e]]);
 }
 
-var object = {
+let object = {
   name : 'Holly',
   age  : 35,
   role : 'producer'
-}
+};
 
 convertObjectToList(object);

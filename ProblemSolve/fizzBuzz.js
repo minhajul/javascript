@@ -1,6 +1,5 @@
 function fizzbuzz(n){
 	let results = [];
-
 	for(let i = 1; i <= n; i++){
 		let add = '';
 
@@ -18,6 +17,5 @@ function fizzbuzz(n){
 			results.push(add);
 		}
 	}
-
 	return results;
 }

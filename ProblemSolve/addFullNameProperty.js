@@ -16,7 +16,7 @@ function addFullNameProperty(obj) {
   return obj;
 }
 
-var person = {
+let person = {
   firstName: 'Jade',
   lastName: 'Smith'
 };

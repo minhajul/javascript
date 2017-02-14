@@ -18,11 +18,11 @@ function addObjectProperty(obj1, key, obj2) {
    return obj1;
 }
 
-var person1 = {
+let person1 = {
   name: 'Joe Blow',
   role: 'schlub'
 };
-var person2 = {
+let person2 = {
   name: 'Mr. Burns',
   role: 'supervisor'
 };

@@ -22,10 +22,10 @@
 
 function transformEmployeeData(array) {
 	return array.map(function(a) {
-    	var obj = {};
+    	let obj = {};
     	a.map(function(b) {
       	   obj[b[0]] = b[1];
     	});
-      return obj;
+        return obj;
   	})
 }

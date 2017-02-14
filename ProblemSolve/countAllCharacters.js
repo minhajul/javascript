@@ -11,13 +11,13 @@
 
 
 function countAllCharacters(str) {
-   var letter = {};
+   let letter = {};
    for(let i = 0; i < str.length; i++){
-   	  var l = str.charAt(i);
+   	  let l = str.charAt(i);
    	  letter[l] = isNaN(letter[l]) ? 1 : letter[l]+1;
    }
    return letter;
 }
 
-var output = countAllCharacters('banana');
+let output = countAllCharacters('banana');
 console.log(output);

@@ -11,6 +11,6 @@ function addProperty(obj, key) {
    return obj;
 }
 
-var myObj = {};
+let myObj = {};
 addProperty(myObj, 'myProperty');
 console.log(myObj.myProperty); // --> true
