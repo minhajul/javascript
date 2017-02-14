@@ -11,4 +11,4 @@ function twoSum(array, S){
 	return false
 }
 
-twoSum([3, 2, 3, 4], 2)
+twoSum([3, 2, 3, 4], 2);
