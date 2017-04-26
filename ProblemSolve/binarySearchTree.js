@@ -33,8 +33,6 @@ class BinarySearchTree{
     }
 }
 
-
-
 let root = new Node(40);
 let treeTeam = new BinarySearchTree(root);
 
