@@ -17,6 +17,24 @@
 <script>
     const peoples = document.querySelectorAll('.people p');
     Array.from(peoples).map(people => console.log(people.textContent));
+
+    const peoplesTwo = document.querySelectorAll('.people p');
+    const people = Array.from(peoplesTwo, person => {
+       return person.textContent;
+    });
+    console.log(people);
+
+    function sum() {
+        const numbers = Array.from(arguments);
+        const sumation = numbers.reduce((prev, next) =>  prev + next, 0);
+        console.log(sumation);
+    }
+
+    sum(20, 390, 20, 20, 32, 44);
+
+    const ages = Array.of(12, 3, 43,40);
+    console.log(ages);
+
 </script>
 
 
