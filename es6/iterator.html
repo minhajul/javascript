@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterator and Looping</title>
+</head>
+<body>
+
+
+<div class="paragraph">
+    <p>Test One</p>
+    <p>Test Two</p>
+    <p>Test Three</p>
+    <p>Test Four</p>
+    <p>Test Five</p>
+</div>
+
+
+<script>
+
+    const peoples = ['Minhaj', 'Test One', 'Test Two'];
+
+    for (const people of peoples){
+        console.log(people);
+    }
+
+    for (const [i, people] of peoples.entries()){
+        console.log(`Mane is ${people} and index is ${i+1}`);
+    }
+
+
+    function addNumbers() {
+        let total = 0;
+        for (let num of arguments){
+            total += num;
+        }
+        return total;
+    }
+
+    console.log(addNumbers(120, 2, 20, 20, 30, 40));
+
+
+    const paragraphs = document.querySelectorAll('p');
+    console.log(paragraphs);
+    for (const para of paragraphs){
+        para.addEventListener('click', function () {
+            console.log(para.textContent);
+        })
+    }
+
+
+</script>
+
+</body>
+</html>
