@@ -50,46 +50,51 @@
 //        });
 
     // Promise based
-    function logFetch(url) {
-        return fetch(url)
-            .then(response => response.text())
-            .then(text => console.log(text))
-            .catch(error => {
-                console.log(error);
-            })
-    }
+//    function logFetch(url) {
+//        return fetch(url)
+//            .then(response => response.text())
+//            .then(text => console.log(text))
+//            .catch(error => {
+//                console.log(error);
+//            })
+//    }
 
     // Using async
-    const fetchUser = async (url) => {
-        try{
-            const reponse = await fetch(url);
-            return await reponse.json();
-        }catch(error) {
-            console.error(error);
-        }
-    };
+//    const fetchUser = async (username) => {
+//        const url = `https://api.github.com/users/${username}`;
+//        const response = await fetch(url);
+//        const data = await response.json();
+//        if (response.status !== 200){
+//            throw Error(data.message);
+//        }
+//        return data;
+//    };
 
-    class GithubApiClient{
-        async fetchUser(username){
-            const url = `https://api.github.com/users/${username}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            if (response.status !== 200) {
-                throw Error(data.message);
-            }
+//    fetchUser('minhajCSEa')
+//        .then(user => console.log(user.name))
+//        .catch(error => console.log(error.message));
 
-            return data;
-        }
+    async function fetchUser(endpoint) {
+        const url = `https://api.github.com/${endpoint}`;
+        const response = await fetch(url);
+        return await response.json();
     }
 
+    async function fetchGithubUser(handle) {
+        const userPromise = fetchUser(`users/${handle}`);
+        const reposPromise = fetchUser(`users/${handle}/repos`);
 
-    const client = new GithubApiClient();
-    client.fetchUser('minhajCSEm')
-        .then(user => {
-            console.log(user);
-        }).catch(error => {
-            console.log(error.message, 1);
-        });
+        const user = await userPromise;
+        const repos = await reposPromise;
+
+        console.log(user.name);
+        console.log(repos.length);
+    }
+
+    console.time('start');
+    fetchGithubUser('minhajCSE');
+    console.timeEnd('start');
+
 
 </script>
 
