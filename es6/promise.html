@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+//    async function fethUser(username) {
+//        const url = `https://api.github.com/users/${username}`;
+//        const response = await fetch(url);
+//        const user = await response.json();
+//        console.log(user.name, user.location);
+//    }
+//
+//    fethUser("minhajCSE");
+
+
+//    function resolvedAfterOneSecond(value) {
+//        return new Promise(resolved => {
+//            setTimeout(()=>{
+//                resolved(value);
+//            }, 1000)
+//        });
+//    }
+//    async function add(value) {
+//        const a = resolvedAfterOneSecond(20);
+//        const b = resolvedAfterOneSecond(30);
+//
+//        return value + await a + await b;
+//    }
+//
+//    add(10)
+//        .then(result => {
+//            console.log(result);
+//        });
+//
+//    async function add2(value) {
+//        const a = await resolvedAfterOneSecond(20);
+//        const b = await resolvedAfterOneSecond(30);
+//
+//        return value + a + b;
+//    }
+//
+//    add2(20)
+//        .then(result => {
+//            console.log(result);
+//        });
+
+    // Promise based
+    function logFetch(url) {
+        return fetch(url)
+            .then(response => response.text())
+            .then(text => console.log(text))
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    // Using async
+    const fetchUser = async (url) => {
+        try{
+            const reponse = await fetch(url);
+            return await reponse.json();
+        }catch(error) {
+            console.error(error);
+        }
+    };
+
+    class GithubApiClient{
+        async fetchUser(username){
+            const url = `https://api.github.com/users/${username}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            if (response.status !== 200) {
+                throw Error(data.message);
+            }
+
+            return data;
+        }
+    }
+
+
+    const client = new GithubApiClient();
+    client.fetchUser('minhajCSEm')
+        .then(user => {
+            console.log(user);
+        }).catch(error => {
+            console.log(error.message, 1);
+        });
+
+</script>
+
+</body>
+</html>
