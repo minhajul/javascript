@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array --- ES6</title>
+</head>
+<body>
+
+<script>
+    const peoples = [
+        { name: 'ABC', year: 1988 },
+        { name: 'DEF', year: 1986 },
+        { name: 'GHI', year: 1970 },
+        { name: 'JKL', year: 2015 }
+    ];
+
+    const comments = [
+        { text: 'Love this!', id: 523423 },
+        { text: 'Super good', id: 823423 },
+        { text: 'You are the best', id: 2039842 },
+        { text: 'Ramen is my fav food ever', id: 123523 },
+        { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+    
+    // Is at least one person 19 or older?
+    const isAdult = peoples.some( people => new Date().getFullYear() - people.year >= 19);
+    console.log(isAdult);
+
+    // Is everyone 19 or older?
+    const isOlder = peoples.every( people => new Date().getFullYear() - people.year >= 19);
+    console.log(isOlder);
+
+    // Find the comment with the ID of 823423
+    const find = comments.find( comment => comment.id === 823423);
+    console.log(find);
+
+    // Find the comment with this ID
+    const findIndex = comments.findIndex( comment => comment.id === 823423);
+    console.log(findIndex);
+
+</script>
+
+</body>
+</html>

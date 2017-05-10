@@ -12,7 +12,7 @@
 // logger.next();
 // logger.next();
 
-function* random(max) {
+function* random() {
     while (true){
         yield Math.floor(Math.random() * 10) + 1;
     }
