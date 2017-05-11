@@ -1,5 +1,4 @@
 
-
 function fethUser(username) {
     const url = `https://api.github.com/users/${username}`;
     fetch(url)
@@ -8,6 +7,5 @@ function fethUser(username) {
             console.log(user.name);
         })
 }
-
 
 console.log(fethUser("minhajCSE"));
