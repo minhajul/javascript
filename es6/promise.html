@@ -8,91 +8,18 @@
 
 <script>
 
-    async function fethUser(username) {
-        const url = `https://api.github.com/users/${username}`;
-        const response = await fetch(url);
-        const user = await response.json();
-        console.log(user.name, user.location);
-    }
 
-    fethUser("minhajCSE");
+    const info = fetch('https://api.github.com/users/minhajCSE');
+    const repos = fetch('https://api.github.com/users/minhajCSE/repos');
 
-
-    function resolvedAfterOneSecond(value) {
-        return new Promise(resolved => {
-            setTimeout(()=>{
-                resolved(value);
-            }, 1000)
-        });
-    }
-    async function add(value) {
-        const a = resolvedAfterOneSecond(20);
-        const b = resolvedAfterOneSecond(30);
-
-        return value + await a + await b;
-    }
-
-    add(10)
-        .then(result => {
-            console.log(result);
-        });
-
-    async function add2(value) {
-        const a = await resolvedAfterOneSecond(20);
-        const b = await resolvedAfterOneSecond(30);
-
-        return value + a + b;
-    }
-
-    add2(20)
-        .then(result => {
-            console.log(result);
-        });
-
-    function logFetch(url) {
-        return fetch(url)
-            .then(response => response.text())
-            .then(text => console.log(text))
-            .catch(error => {
-                console.log(error);
-            })
-    }
-
-    const fetchUser = async (username) => {
-        const url = `https://api.github.com/users/${username}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        if (response.status !== 200){
-            throw Error(data.message);
-        }
-        return data;
-    };
-
-    fetchUser('minhajCSEa')
-        .then(user => console.log(user.name))
-        .catch(error => console.log(error.message));
-
-    async function fetchUser(endpoint) {
-        const url = `https://api.github.com/${endpoint}`;
-        const response = await fetch(url);
-        return await response.json();
-    }
-
-    async function fetchGithubUser(handle) {
-        const userPromise = fetchUser(`users/${handle}`);
-        const reposPromise = fetchUser(`users/${handle}/repos`);
-
-        const user = await userPromise;
-        const repos = await reposPromise;
-
-        console.log(user.name);
-        console.log(repos.length);
-    }
-
-    console.time('statr');
-    fetchGithubUser('minhajCSE');
-    console.timeEnd('statr');
-
+    Promise.all([info, repos])
+        .then(responses => {
+            return Promise.all(responses.map(res => res.json()));
+        }).then(responses => {
+            const [info, repos] = responses;
+            console.log(info.name);
+            console.log(repos);
+        })
 
 </script>
 
