@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    class Dog{
+        constructor(name, breed){
+            this.name = name;
+            this.breed = breed;
+        }
+
+        bark(){
+            return (`Bark Bark! My name is ${this.name}`);
+        }
+
+        cuddle(){
+            return (`I love you owner! ${this.breed}`);
+        }
+    }
+
+    const snickers = new Dog('Snickers', 'King Charles');
+    const sunny = new Dog('Sunny', 'Golden Doodle');
+    console.log(snickers);
+    console.log(sunny);
+    console.log(snickers.bark());
+    console.log(sunny.cuddle());
+
+</script>
+
+</body>
+</html>

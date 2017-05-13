@@ -57,7 +57,7 @@
                 console.log(error);
             })
     }
-    
+
     const fetchUser = async (username) => {
         const url = `https://api.github.com/users/${username}`;
         const response = await fetch(url);
@@ -92,6 +92,7 @@
     console.time('statr');
     fetchGithubUser('minhajCSE');
     console.timeEnd('statr');
+
 
 </script>
 
