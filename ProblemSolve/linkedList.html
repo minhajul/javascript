@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    class Node{
+        constructor(element){
+            this.element = element;
+            this.next = null
+        }
+    }
+
+
+    class LinkedList{
+        constructor(){
+            this.head = new Node('head');
+        }
+
+        find(item){
+            let current = this.head;
+            while(current.element !== item){
+                current = current.next;
+            }
+
+            return current;
+        }
+
+        findPreviousNode(item){
+            let currentNode = this.head;
+
+            while(currentNode.next !== null && currentNode.next.element !== item){
+                currentNode = currentNode.next;
+            }
+
+            return currentNode;
+        }
+
+        insert(newElement, item){
+            let newNode = new Node(newElement);
+            let current = this.find(item);
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        remove(item){
+            let prevNode = this.findPreviousNode(item);
+            if (prevNode.next !== null){
+                prevNode.next = prevNode.next.next;
+            }
+        }
+
+    }
+
+
+    let nodes = new LinkedList();
+    nodes.insert('Dim', 'head');
+    nodes.insert('Murgi', 'Dim');
+    nodes.insert('Hash', 'Murgi');
+    nodes.remove('Hash');
+    console.log(nodes);
+
+</script>
+
+</body>
+</html>
