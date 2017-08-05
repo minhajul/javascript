@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Promise</title>
 </head>
 <body>
 
@@ -17,8 +17,23 @@
         }).then(responses => {
             const [info, repos] = responses;
             console.log(info.name);
-            console.log(repos);
-        })
+            console.log(repos.length);
+        });
+
+
+    function fethUser(username) {
+        const url = `https://api.github.com/users/${username}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(user => {
+                console.log(user.followers);
+                console.log(user.name);
+            })
+    }
+
+    console.time('Start');
+    console.log(fethUser("minhajCSE"));
+    console.timeEnd('End');
 
 </script>
 
