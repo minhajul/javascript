@@ -1,21 +1,13 @@
+
 function fizzbuzz(n){
-	let results = [];
+    let results = [];
 	for(let i = 1; i <= n; i++){
-		let add = '';
-
-		if(i % 3 === 0){
-			add += 'Fizz';
-		}
-
-		if(i % 5 === 0){
-			add += 'Buzz';
-		}
-
-		if(add === ''){
-			results.push(i);
-		}else{
-			results.push(add);
-		}
+		const isFizz = (i % 3 === 0);
+		const isBuzz= (i % 5 === 0);
+		results.push(isFizz && isBuzz ?  'FizzBuzz' : isFizz ? 'Fizz' : isBuzz ? 'Buzz' : i);
 	}
+
 	return results;
 }
+
+console.log(fizzbuzz(50));
